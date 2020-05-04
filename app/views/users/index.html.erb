@@ -1,0 +1,9 @@
+<h1>Users List:</h1>
+<br>
+<%= link_to "sign up" , new_user_path%>
+<% @users.each do |v| %>
+<p><%= v.username %></p>
+<p><%= v.email %></p>
+<br>
+
+<% end %>
