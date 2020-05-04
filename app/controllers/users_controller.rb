@@ -11,13 +11,19 @@ class UsersController < ApplicationController
           render :new
         end
     end
+
+    def login
+    end
+
     def show
         @user = User.find(params[:id])
     end
     def new
         @user = User.new
     end
-    
+    def session
+
+    end
     private
 
     def post_params
