@@ -10,7 +10,8 @@
   </head>
 
   <body>
-  <%if cookies[:userid].nil? || cookies[:userid] == "x"%>
+  <a href="<%=join_event_path%>">join a event</a>
+  <%if cookies[:userid].nil? || cookies[:userid] == ""%>
     <p>Welcome Stranger!
     <%= link_to "Sign In", login_path%>
     <%= link_to "Sign up", new_user_path%></p>

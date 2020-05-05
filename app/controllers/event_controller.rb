@@ -1,4 +1,5 @@
 class EventController < ApplicationController
+    before_action :session?
     def index
         @list = Event.all
         @users = User.all
@@ -20,8 +21,16 @@ class EventController < ApplicationController
         @user = User.find(cookies[:userid]).events
     end
     def join
+        redirect_to login_path if cookies[:userid] == ''
+        @attendee=Attendee.new
     end
     def register
+        @attendee=Attendee.new(user_id: cookies[:userid],event_id: params[:event_id])
+        if @attendee.save
+            redirect_to events_Home_path
+        else
+            render join_event_path
+        end
     end
 
     private
@@ -29,4 +38,7 @@ class EventController < ApplicationController
     def user_params
         params.require(:event).permit(:title, :description)
     end
+    def session?
+        redirect_to login_path if !cookies[:userid] != ''
+      end
 end

@@ -1,0 +1,6 @@
+<form action="<%=registed_path%>" method="POST">
+    <label for="event_id">enter the id of the event:</label>
+    <input type="number" name="event_id" min="1" value="1">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <button type="submit">confirm</button>
+</form>

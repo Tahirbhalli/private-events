@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :session?, except:[:login,:auth,:new,:create]
   def login
   #  redirect_to users_path if cookies[:userid]
     
@@ -16,8 +17,9 @@ class UsersController < ApplicationController
     #render 'sajkhdjksa'# if @user
 
   end
+
   def logout
-    cookies[:userid] = "x"
+    cookies[:userid] = ""
     redirect_to events_Home_path
   end
   # GET /users
@@ -82,13 +84,13 @@ class UsersController < ApplicationController
 
   private
     def session?
-      redirect_to event_index_path if cookies[:userid]
+      redirect_to login_path if cookies[:userid] != ''
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
     end
-
+    
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :email, :password)
