@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :session?
   def login
-    redirect_to users_path if cookies[:userid]
+  #  redirect_to users_path if cookies[:userid]
     
   end
   def auth
     begin
     @user=User.find(params[:uid])
     cookies[:userid]=@user.id
-    redirect_to users_path
+    redirect_to events_Home_path
     rescue
       flash[:error] = "User not found"
       render :login
@@ -77,6 +78,9 @@ class UsersController < ApplicationController
   end
 
   private
+    def session?
+      redirect_to event_index_path if cookies[:userid]
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])

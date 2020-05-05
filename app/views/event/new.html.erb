@@ -1,0 +1,9 @@
+<% if @user.errors.any? %> <div id="error_explanation"> <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2> <ul> <% @user.errors.full_messages.each do |msg| %> <li><%= msg %></li> <% end %> </ul> </div> <% end %>
+<form action="/event" action="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="title">title</label>
+    <input type="text" name="title">
+    <label for="description">title</label>
+    <input type="text" name="desc">
+    <button type="submit">Create</button>
+</form>
