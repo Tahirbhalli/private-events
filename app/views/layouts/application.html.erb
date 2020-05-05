@@ -10,6 +10,15 @@
   </head>
 
   <body>
+  <%if cookies[:userid].nil? || cookies[:userid] == "x"%>
+    <p>Welcome Stranger!
+    <%= link_to "Sign In", login_path%>
+    <%= link_to "Sign up", new_user_path%></p>
+    <br>
+    <%else%>
+    <p>Welcome! <%= User.find(cookies[:userid]).name%> <%= link_to "Logout", logout_path%> </p>
+    <br>
+  <%end%>
     <%= yield %>
   </body>
 </html>

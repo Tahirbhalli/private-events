@@ -1,3 +1,13 @@
 <a href="<%=new_event_path%>">Create event</a>
-<a href="<%=all_events_path%>">See your created events</a>
+<a href="<%=events_all_path%>">See your created events</a>
 <a href="<%=join_event_path%>">join a event</a>
+
+<h1>Events List:</h1>
+<br>
+<% @list.each do |v| %>
+<p>Title : <%= v.title %></p>
+<p>Description : <%= v.description %></p>
+<p>By : <%= User.find(v.user_id).name%> 
+<hr>
+
+<% end %>

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :session?
   def login
   #  redirect_to users_path if cookies[:userid]
     
@@ -16,6 +15,10 @@ class UsersController < ApplicationController
     end
     #render 'sajkhdjksa'# if @user
 
+  end
+  def logout
+    cookies[:userid] = "x"
+    redirect_to events_Home_path
   end
   # GET /users
   # GET /users.json
