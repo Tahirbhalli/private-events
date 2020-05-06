@@ -29,7 +29,7 @@ class EventController < ApplicationController
         if @attendee.save
             redirect_to events_Home_path
         else
-            render join_event_path
+            redirect_to join_event_path
         end
     end
 
@@ -39,6 +39,6 @@ class EventController < ApplicationController
         params.require(:event).permit(:title, :description)
     end
     def session?
-        redirect_to login_path if !cookies[:userid] != ''
+        redirect_to login_path if cookies[:userid] == nil
       end
 end

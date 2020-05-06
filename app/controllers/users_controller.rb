@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :session?, except:[:login,:auth,:new,:create]
+  before_action :session?, except:[:new,:create,:logout]
   def login
   #  redirect_to users_path if cookies[:userid]
     
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    cookies[:userid] = ""
+    cookies[:userid] = nil
     redirect_to events_Home_path
   end
   # GET /users
@@ -84,7 +84,8 @@ class UsersController < ApplicationController
 
   private
     def session?
-      redirect_to login_path if cookies[:userid] != ''
+      #byebug
+      redirect_to events_Home_path if cookies[:userid] != nil
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
