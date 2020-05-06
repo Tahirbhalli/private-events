@@ -6,7 +6,9 @@
 <% @list.each do |v| %>
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
+<p>Date of event : <%= v.event_date %></p>
 <p>By : <%= User.find(v.user_id).name%> 
+
 <hr>
 
 <% end %>

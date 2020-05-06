@@ -36,7 +36,7 @@ class EventController < ApplicationController
     private
 
     def user_params
-        params.require(:event).permit(:title, :description)
+        params.require(:event).permit(:title, :description,:event_date)
     end
     def session?
         redirect_to login_path if cookies[:userid].to_i == 0

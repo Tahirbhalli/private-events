@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_145357) do
     t.integer "user_id"
     t.string "title"
     t.string "description"
+    t.date "event_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_events_on_user_id"
