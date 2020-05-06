@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:uid])
     cookies[:userid] = @user.id
     flash[:suc] = 'Success'
-    format.html { redirect_to events_Home_path, notice: 'Success' }
+    redirect_to events_Home_path
   rescue StandardError
     flash[:error] = 'User not found'
     render :login
