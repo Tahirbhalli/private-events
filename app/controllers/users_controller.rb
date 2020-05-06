@@ -85,7 +85,7 @@ class UsersController < ApplicationController
   private
     def session?
       #byebug
-      redirect_to events_Home_path if cookies[:userid] != nil
+      redirect_to events_Home_path if cookies[:userid].to_i != 0
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
