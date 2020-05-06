@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  #before_action :session?, except: %i[create logout]
+  # before_action :session?, except: %i[create logout]
   def login
     #  redirect_to users_path if cookies[:userid]
   end

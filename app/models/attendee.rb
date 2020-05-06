@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Attendee < ApplicationRecord
   before_save :check
   belongs_to :user

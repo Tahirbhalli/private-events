@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class EventController < ApplicationController
   before_action :session?
   def index
@@ -21,7 +19,7 @@ class EventController < ApplicationController
     else
       format.html { render :new }
       format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    end
   end
 
   def all
@@ -49,6 +47,6 @@ class EventController < ApplicationController
   end
 
   def session?
-    redirect_to login_path if cookies[:userid].to_i == 0
-    end
+    redirect_to login_path if cookies[:userid].to_i.zero?
+  end
 end
