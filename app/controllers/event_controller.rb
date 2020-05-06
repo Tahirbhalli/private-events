@@ -32,7 +32,7 @@ class EventController < ApplicationController
             redirect_to join_event_path
         end
     end
-
+    
     private
 
     def user_params

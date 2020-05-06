@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   match 'session' => 'users#auth', via:[:post]
   match 'events/Home' => 'event#index', via:[:get]
   match 'join/event' => 'event#join' ,via:[:get]
-  match 'registed' => 'event#register',via:[:post]
+  match 'registed' => 'event#register',via:[:post,:get]
   match 'logout' => 'users#logout',via:[:get]
   root 'users#login'
 
