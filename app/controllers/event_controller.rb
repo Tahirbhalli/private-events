@@ -21,7 +21,7 @@ class EventController < ApplicationController
         @user = User.find(cookies[:userid]).events
     end
     def join
-        redirect_to login_path cookies[:userid].to_i == 0
+        redirect_to login_path if cookies[:userid] == ''
         @attendee=Attendee.new
     end
     def register
@@ -39,6 +39,6 @@ class EventController < ApplicationController
         params.require(:event).permit(:title, :description)
     end
     def session?
-        redirect_to login_path if cookies[:userid] == nil
+        redirect_to login_path if cookies[:userid].to_i == 0
       end
 end
