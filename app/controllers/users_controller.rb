@@ -1,27 +1,29 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :session?, except:[:create,:logout]
-  def login
-  #  redirect_to users_path if cookies[:userid]
-    
-  end
-  def auth
-    begin
-    @user=User.find(params[:uid])
-    cookies[:userid]=@user.id
-    redirect_to events_Home_path
-    rescue
-      flash[:error] = "User not found"
-      render :login
-    end
-    #render 'sajkhdjksa'# if @user
+# frozen_string_literal: true
 
+class UsersController < ApplicationController
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :session?, except: %i[create logout]
+  def login
+    #  redirect_to users_path if cookies[:userid]
+  end
+
+  def auth
+    @user = User.find(params[:uid])
+    cookies[:userid] = @user.id
+    flash[:suc] = 'Success'
+    format.html { redirect_to events_Home_path, notice: 'Success' }
+  rescue StandardError
+    flash[:error] = 'User not found'
+    render :login
+
+    # render 'sajkhdjksa'# if @user
   end
 
   def logout
     cookies[:userid] = nil
     redirect_to events_Home_path
   end
+
   # GET /users
   # GET /users.json
   def index
@@ -30,8 +32,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show
-  end
+  def show; end
 
   # GET /users/new
   def new
@@ -39,8 +40,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users
   # POST /users.json
@@ -83,17 +83,19 @@ class UsersController < ApplicationController
   end
 
   private
-    def session?
-      #byebug
-      redirect_to events_Home_path if cookies[:userid].to_i != 0
-    end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-    
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password)
-    end
+
+  def session?
+    # byebug
+    redirect_to events_Home_path if cookies[:userid].to_i != 0
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end
