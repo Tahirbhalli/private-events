@@ -10,6 +10,9 @@
   </head>
 
   <body>
+  <% flash.each do |msg| %>
+    <%= msg[1] %>
+<% end %>
   <a href="<%=join_event_path%>">join a event</a>
   <%if cookies[:userid].nil? || cookies[:userid] == ""%>
     <p>Welcome Stranger!

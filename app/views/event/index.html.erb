@@ -1,14 +1,37 @@
 <a href="<%=new_event_path%>">Create event</a>
 <a href="<%=events_all_path%>">See your created events</a>
 
-<h1>Events List:</h1>
+<h1>Upcoming Events List:</h1>
 <br>
-<% @list.each do |v| %>
+<% @new_list.each do |v| %>
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
 <p>By : <%= User.find(v.user_id).name%> 
+<br>
+<% if @attendee.where(event_id: v.id).exists?%>
+<p>Joined!</p>
+<% else %>
 <a href="<%=registed_path(event_id: v.id)%>">join event</a>
+<%end%>
+
+<hr>
+
+<% end %>
+
+<h1>Past Events List:</h1>
+<br>
+<% @old_list.each do |v| %>
+<p>Title : <%= v.title %></p>
+<p>Description : <%= v.description %></p>
+<p>Date of event : <%= v.event_date %></p>
+<p>By : <%= User.find(v.user_id).name%> 
+<br>
+<% if @attendee.where(event_id: v.id).exists?%>
+<p>Joined!</p>
+<% else %>
+<p>Missed :(</p>
+<%end%>
 
 <hr>
 

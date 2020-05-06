@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :session?, except:[:new,:create,:logout]
+  before_action :session?, except:[:create,:logout]
   def login
   #  redirect_to users_path if cookies[:userid]
     

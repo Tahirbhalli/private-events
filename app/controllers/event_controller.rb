@@ -1,8 +1,10 @@
 class EventController < ApplicationController
     before_action :session?
     def index
-        @list = Event.all
+        @new_list = Event.where('events.event_date >= ?', DateTime.current.beginning_of_day) 
+        @old_list = Event.where('events.event_date < ?', DateTime.current.beginning_of_day) 
         @users = User.all
+        @attendee = Attendee.where(user_id: cookies[:userid])
     end
     def new
         @event = Event.new
