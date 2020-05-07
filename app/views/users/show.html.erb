@@ -20,8 +20,8 @@
 <h3>Attended Events</h3>
 
 <% @events.each do |v| %>
-<div class="event">
 <% if @attended.where(event_id: v.id).exists?%>
+<div class="event">
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
