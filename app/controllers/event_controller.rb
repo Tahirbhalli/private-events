@@ -4,7 +4,7 @@ class EventController < ApplicationController
     @new_list = Event.where('events.event_date >= ?', DateTime.current.beginning_of_day)
     @old_list = Event.where('events.event_date < ?', DateTime.current.beginning_of_day)
     @users = User.all
-    @attendee = Attendee.where(user_id: cookies[:userid])
+    @attendee = Attendee.all
   end
 
   def new

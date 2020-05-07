@@ -1,19 +1,33 @@
-<p id="notice"><%= notice %></p>
+<h3>Your Events</h3>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<% @user.each do |v| %>
+<p>Title : <%= v.title %></p>
+<p>Description : <%= v.description %></p>
+<p>Date of event : <%= v.event_date %></p>
+<p>By : <%= User.find(v.user_id).name%> 
+<p>Attendees :</p>
+<% @attendee.each do |f|%>
+<% if f.event_id == v.id%>
+<%= User.find(f.user_id).name%> |
+<% end %>
+<% end %>
+<hr>
+<%end%>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<h3>Attended Events</h3>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% @events.each do |v| %>
+<% if @attended.where(event_id: v.id).exists?%>
+<p>Title : <%= v.title %></p>
+<p>Description : <%= v.description %></p>
+<p>Date of event : <%= v.event_date %></p>
+<p>By : <%= User.find(v.user_id).name%> 
+<p>Attendees :</p>
+<% @attendee.each do |f|%>
+<% if f.event_id == v.id%>
+<%= User.find(f.user_id).name%> |
+<% end %>
+<% end %>
+<hr>
+<%end%>
+<%end%>

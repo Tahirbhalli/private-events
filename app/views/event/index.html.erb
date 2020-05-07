@@ -1,6 +1,3 @@
-<a href="<%=new_event_path%>">Create event</a>
-<a href="<%=events_all_path%>">See your created events</a>
-
 <h1>Upcoming Events List:</h1>
 <br>
 <% @new_list.each do |v| %>
@@ -8,8 +5,14 @@
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
 <p>By : <%= User.find(v.user_id).name%> 
+<p>Attendees :</p>
+<% @attendee.each do |f|%>
+<% if f.event_id == v.id%>
+<%= User.find(f.user_id).name%> |
+<% end %>
+<% end %>
 <br>
-<% if @attendee.where(event_id: v.id).exists?%>
+<% if @attendee.where(user_id: cookies[:userid], event_id: v.id).exists?%>
 <p>Joined!</p>
 <% else %>
 <a href="<%=registed_path(event_id: v.id)%>">join event</a>
@@ -26,8 +29,14 @@
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
 <p>By : <%= User.find(v.user_id).name%> 
+<p>Attendees :</p>
+<% @attendee.each do |f|%>
+<% if f.event_id == v.id%>
+<%= User.find(f.user_id).name%> |
+<% end %>
+<% end %>
 <br>
-<% if @attendee.where(event_id: v.id).exists?%>
+<% if @attendee.where(user_id: cookies[:userid], event_id: v.id).exists?%>
 <p>Joined!</p>
 <% else %>
 <p>Missed :(</p>

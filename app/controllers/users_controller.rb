@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  # before_action :session?, except: %i[create logout]
+  before_action :session?, except: %i[logout show]
   def login
     #  redirect_to users_path if cookies[:userid]
   end
@@ -30,7 +30,12 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show; end
+  def show
+    @user = User.find(cookies[:userid]).events
+    @attended = Attendee.where(user_id: cookies[:userid])
+    @attendee = Attendee.all
+    @events = Event.all
+  end
 
   # GET /users/new
   def new
