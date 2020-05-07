@@ -1,7 +1,9 @@
-# Micro-Reddit Project
-- this is a event management system where user can particpate a event or create a event
+# Private Events Project
+- This is a website for creating and joining events
 # What it does
-E- Event management
+- Make an Event
+- Join an Event
+- Make a User
 
 # Built With
 - Ruby
