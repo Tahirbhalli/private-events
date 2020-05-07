@@ -1,6 +1,8 @@
+<div class="card">
 <h3>Your Events</h3>
 
 <% @user.each do |v| %>
+<div class="event">
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
@@ -11,12 +13,14 @@
 <%= User.find(f.user_id).name%> |
 <% end %>
 <% end %>
-<hr>
+</div>
 <%end%>
-
+</div>
+<div class="card">
 <h3>Attended Events</h3>
 
 <% @events.each do |v| %>
+<div class="event">
 <% if @attended.where(event_id: v.id).exists?%>
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
@@ -28,6 +32,7 @@
 <%= User.find(f.user_id).name%> |
 <% end %>
 <% end %>
-<hr>
+</div>
 <%end%>
 <%end%>
+</div>

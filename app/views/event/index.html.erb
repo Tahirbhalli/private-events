@@ -1,6 +1,8 @@
+<div class="card">
 <h1>Upcoming Events List:</h1>
 <br>
 <% @new_list.each do |v| %>
+<div class="event">
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
@@ -19,14 +21,17 @@
 <% else %>
 <a href="<%=registed_path(event_id: v.id)%>">join event</a>
 <%end%>
+</div>
 
-<hr>
+
 
 <% end %>
-
+</div>
+<div class="card">
 <h1>Past Events List:</h1>
 <br>
 <% @old_list.each do |v| %>
+<div class="event">
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
@@ -43,6 +48,7 @@
 <% else %>
 <p>Missed</p>
 <%end%>
-<hr>
+</div>
 
 <% end %>
+</div>
