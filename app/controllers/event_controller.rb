@@ -12,8 +12,9 @@ class EventController < ApplicationController
   end
 
   def create
-    @event = Event.new(user_params)
-    @event.user_id = cookies[:userid]
+    @user=User.find(cookies[:userid])
+    @event = @user.events.build(user_params)
+    #@event.user_id = cookies[:userid]
     if @event.save
       redirect_to events_Home_path
     else

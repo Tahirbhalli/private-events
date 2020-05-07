@@ -3,9 +3,8 @@
 class CreateAttendees < ActiveRecord::Migration[6.0]
   def change
     create_table :attendees do |t|
-      t.belongs_to :user
-      t.belongs_to :event
-
+      t.references :user, foreign_key: true
+      t.references :event, foreign_key: true
       t.timestamps
     end
   end

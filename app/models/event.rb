@@ -7,4 +7,7 @@ class Event < ApplicationRecord
   def self.upcoming_events(time)
     where("event_date <= ?", time)
   end
+  def self.creator
+    User.where('user.id = self.user_id').select('name')
+  end
 end

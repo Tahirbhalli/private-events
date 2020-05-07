@@ -12,6 +12,7 @@
 <% end %>
 <% end %>
 <br>
+
 <% if @attendee.where(user_id: cookies[:userid], event_id: v.id).exists?%>
 <p>Joined!</p>
 <% else %>

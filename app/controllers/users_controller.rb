@@ -31,8 +31,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(cookies[:userid]).events
-    @attended = Attendee.where(user_id: cookies[:userid])
+    @user = User.find(params[:id]).events
+    @attended = Attendee.where(user_id: params[:id])
     @attendee = Attendee.all
     @events = Event.all
   end
