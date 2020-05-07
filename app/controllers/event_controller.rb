@@ -1,7 +1,7 @@
 class EventController < ApplicationController
   before_action :session?
   def index
-    @new_list=Event.created_before(Date.today)
+    @new_list = Event.created_before(Date.today)
     @old_list = Event.upcoming_events(Date.today)
     @users = User.all
     @attendee = Attendee.all
@@ -12,9 +12,9 @@ class EventController < ApplicationController
   end
 
   def create
-    @user=User.find(cookies[:userid])
+    @user = User.find(cookies[:userid])
     @event = @user.events.build(user_params)
-    #@event.user_id = cookies[:userid]
+    # @event.user_id = cookies[:userid]
     if @event.save
       redirect_to events_Home_path
     else

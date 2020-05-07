@@ -4,7 +4,8 @@
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
-<p>By : <%= User.find(v.user_id).name%> 
+
+<p>By : <%= v.user.name%> 
 <p>Attendees :</p>
 <% @attendee.each do |f|%>
 <% if f.event_id == v.id%>
@@ -13,7 +14,7 @@
 <% end %>
 <br>
 
-<% if @attendee.where(user_id: cookies[:userid], event_id: v.id).exists?%>
+<% if @attendee.isjoined?(cookies[:userid],v.id)%>
 <p>Joined!</p>
 <% else %>
 <a href="<%=registed_path(event_id: v.id)%>">join event</a>
@@ -29,20 +30,19 @@
 <p>Title : <%= v.title %></p>
 <p>Description : <%= v.description %></p>
 <p>Date of event : <%= v.event_date %></p>
-<p>By : <%= User.find(v.user_id).name%> 
+<p>By : <%= v.user.name%> 
 <p>Attendees :</p>
 <% @attendee.each do |f|%>
 <% if f.event_id == v.id%>
-<%= User.find(f.user_id).name%> |
+<%= f.user.name%> |
 <% end %>
 <% end %>
 <br>
-<% if @attendee.where(user_id: cookies[:userid], event_id: v.id).exists?%>
+<% if @attendee.isjoined?(cookies[:userid],v.id)%>
 <p>Joined!</p>
 <% else %>
-<p>Missed :(</p>
+<p>Missed</p>
 <%end%>
-
 <hr>
 
 <% end %>
