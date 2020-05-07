@@ -17,7 +17,7 @@
 <%end%>
 </div>
 <div class="card">
-<h3>Attended Events</h3>
+<h3>Joined Events</h3>
 
 <% @events.each do |v| %>
 <% if @attended.where(event_id: v.id).exists?%>
