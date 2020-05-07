@@ -1,8 +1,8 @@
 class EventController < ApplicationController
   before_action :session?
   def index
-    @new_list = Event.where('events.event_date >= ?', DateTime.current.beginning_of_day)
-    @old_list = Event.where('events.event_date < ?', DateTime.current.beginning_of_day)
+    @new_list=Event.created_before(Date.today)
+    @old_list = Event.upcoming_events(Date.today)
     @users = User.all
     @attendee = Attendee.all
   end
