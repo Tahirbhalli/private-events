@@ -23,4 +23,9 @@ describe 'event management', type: :feature do
     # click_button 'enter'
     expect(page).to have_content 'Title : abc'
   end
+  it 'session and logout test' do
+    click_link 'Logout'
+    visit '/events/Home'
+    expect(page).to have_content 'Welcome Stranger!'
+  end
 end
