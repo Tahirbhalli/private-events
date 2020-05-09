@@ -1,24 +1,38 @@
-# README
+# Private Events Project
+- This is a website for creating and joining events
+# What it does
+- Make an Event
+- Join an Event
+- Make a User
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Built With
+- Ruby
+- Ruby on Rails
+- VSCode
 
-Things you may want to cover:
+## Authors
 
-* Ruby version
+👤 **SpaYco**
 
-* System dependencies
+- Github: [@SpaYco](https://github.com/SpaYco)
+- Twitter: [@iSpaYco](https://twitter.com/iSpaYco)
+- Linkedin: [Aziz Mejri](https://www.linkedin.com/in/spayco/)
+- Hackernoon: [@SpaYco](https://hackernoon.com/@SpaYco)
 
-* Configuration
+👤 **Tahir Ahmad**
 
-* Database creation
+- Github: [@tahirbhalli](https://github.com/Tahirbhalli)
+- Twitter: [@tahirbhalli](https://twitter.com/tahirbhalli)
+- Linkedin: [Tahir Ahmad](https://www.linkedin.com/in/tahir-ahmad-483035164/)
 
-* Database initialization
+# 🤝 Contributing
+Contributions, issues and feature requests are welcome!
 
-* How to run the test suite
+# Show your support
+Give a ⭐️ if you like this project!
 
-* Services (job queues, cache servers, search engines, etc.)
+📝 License
 
-* Deployment instructions
+Check out my stories on medium to see what I'm talking about! Follow me on Instagram and Twitter to see what I am up to!
 
-* ...
+Enjoy!

@@ -13,3 +13,131 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&Roboto&display=swap');
+ * {
+     margin: 0;
+     padding: 0;
+     font-family: 'Roboto', sans-serif !important;
+     box-sizing: border-box;
+     color: white;
+ }
+ html {
+     background: url("background.webp") no-repeat ;
+     background-size: 100% 100%;
+ }
+ body {
+     margin: 0 5%;
+     min-height: 100vh;
+ }
+nav {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 90%;
+    top: 0;
+}
+nav > * {
+    border: 3px solid rgba(0, 0, 0, 0.186);
+    height: 100%;
+    padding: 5px;
+    text-decoration: none;
+    transition: 450ms;
+    flex: 1;
+    text-align: center;
+    background-color: rgba(22, 21, 21, 0.664);
+    color: white;
+}
+nav > a:hover {
+    background-color: rgba(54, 54, 54, 0.664);
+    color: white;
+}
+main {
+    padding-top: 75px;
+    display: flex;
+    justify-content: center;
+}
+main > .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    min-height: 450px;
+    border: 1px solid rgba(0, 0, 0, 0.188);
+    box-shadow: 2px 1px 9px black;
+    margin: 0 15px;
+    transition: 450ms;
+    background-color: rgba(19, 16, 34, 0.384);
+}
+main > .card > .event {
+    box-shadow: 2px 1px 9px black;
+    transition: 250ms;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.116);
+    padding: 35px;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+main > .card > h3 {
+    margin: 15px 0;
+}
+main > .card > .event:hover {
+    box-shadow: 2px 1px 15px rgb(51, 51, 51);
+}
+main > .card > .event > a {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: rgb(128, 0, 100);
+    border:2px solid transparent;
+}
+main > .card > .event > a:hover {
+    border:2px solid rgb(128, 0, 100);
+    background-color: transparent;
+    transition: 450ms;
+}
+form > * {
+    margin: 10px 0;
+    font-size: 25px;
+}
+button, input[type=submit] {
+    min-width: 100px;
+    height: 30px;
+    background-color: transparent;
+    border: 3px solid rgb(197, 0, 171);
+    outline: none;
+    font-weight: 700;
+    font-family: 'Noto Sans', sans-serif;
+    cursor: pointer;
+    transition: 250ms;
+    text-transform: uppercase;
+    color: white;
+    font-size: 15px;
+    padding: 2px 5px;
+}
+button:hover, input[type=submit]:hover {
+    background-color: rgb(197, 0, 171);
+    border: 3px solid transparent;
+}
+
+input, select {
+    background-color: rgba(21, 21, 39, 0.61);
+    border: 1px solid rgba(21, 21, 39, 0.863) ;
+    min-height: 30px;
+}
+.flash {
+    min-width: 120px;
+    min-height: 50px;
+    position: fixed;
+    top: 50px;
+    left: 25px;
+    border: 5px solid violet;
+    background-color: rgba(238, 130, 238, 0.171);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

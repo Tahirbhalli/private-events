@@ -1,0 +1,54 @@
+<div class="card">
+<h1>Upcoming Events List:</h1>
+<br>
+<% @new_list.each do |v| %>
+<div class="event">
+<p>Title : <%= v.title %></p>
+<p>Description : <%= v.description %></p>
+<p>Date of event : <%= v.event_date %></p>
+
+<p>By : <%= v.user.name%> 
+<p>Attendees :</p>
+<% @attendee.each do |f|%>
+<% if f.event_id == v.id%>
+<%= User.find(f.user_id).name%> |
+<% end %>
+<% end %>
+<br>
+
+<% if @attendee.isjoined?(cookies[:userid],v.id)%>
+<p>Joined!</p>
+<% else %>
+<a href="<%=registed_path(event_id: v.id)%>">join event</a>
+<%end%>
+</div>
+
+
+
+<% end %>
+</div>
+<div class="card">
+<h1>Past Events List:</h1>
+<br>
+<% @old_list.each do |v| %>
+<div class="event">
+<p>Title : <%= v.title %></p>
+<p>Description : <%= v.description %></p>
+<p>Date of event : <%= v.event_date %></p>
+<p>By : <%= v.user.name%> 
+<p>Attendees :</p>
+<% @attendee.each do |f|%>
+<% if f.event_id == v.id%>
+<%= f.user.name%> |
+<% end %>
+<% end %>
+<br>
+<% if @attendee.isjoined?(cookies[:userid],v.id)%>
+<p>Joined!</p>
+<% else %>
+<p>Missed</p>
+<%end%>
+</div>
+
+<% end %>
+</div>

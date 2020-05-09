@@ -10,6 +10,29 @@
   </head>
 
   <body>
+  <nav><%if cookies[:userid].nil? || cookies[:userid] == ""%>
+    <p>Welcome Stranger!
+    <%= link_to "Sign In", login_path%>
+    <%= link_to "Sign up", new_user_path%></p>
+    <br>
+    <%else%>
+    <p>Welcome! <%= User.find(cookies[:userid]).name%></p> <%= link_to "Logout", logout_path%> 
+    <a href="<%=join_event_path%>">join an event</a>
+    <a href="<%=new_event_path%>">Create event</a>
+    <a href="<%=user_path(:id => cookies[:userid])%>">See Your Events</a>
+    <a href="<%=events_Home_path%>">See all events!</a>
+
+
+    <br>
+  <%end%>
+  </nav>
+  <% flash.each do |msg| %>
+  <div class="flash">
+    <%= msg[1] %>
+<% end %>
+</div>
+  <main>
     <%= yield %>
+  </main>
   </body>
 </html>
